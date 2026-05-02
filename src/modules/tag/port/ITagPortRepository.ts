@@ -10,4 +10,5 @@ export interface ITagPortRepository {
   findById(id: string): Promise<Tag | null>;
   delete(id: string): Promise<void>;
   update(id: string, data: Partial<ITagDTO>): Promise<Tag>;
+  findAll(ownerId: string): Promise<Tag[]>;
 }
