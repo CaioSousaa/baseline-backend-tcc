@@ -12,4 +12,23 @@ export class TagRepository implements ITagPortRepository {
     const tag = await TagModel.findOne({ color });
     return tag;
   }
+
+  async getByName(name: string): Promise<Tag | null> {
+    const tag = await TagModel.findOne({ name });
+    return tag;
+  }
+
+  async findById(id: string): Promise<Tag | null> {
+    const tag = await TagModel.findById(id);
+    return tag;
+  }
+
+  async delete(id: string): Promise<void> {
+    await TagModel.deleteOne({ _id: id });
+  }
+
+  async update(id: string, data: Partial<ITagDTO>): Promise<Tag> {
+    const updatedTag = await TagModel.findByIdAndUpdate(id, data, { new: true });
+    return updatedTag as Tag;
+  }
 }
