@@ -2,12 +2,17 @@ import { Router } from 'express';
 import { createTag } from '../modules/tag/factories/CreateTagFactory';
 import { updateTag } from '../modules/tag/factories/UpdateTagFactory';
 import { deleteTag } from '../modules/tag/factories/DeleteTagFactory';
+import { getAllTags } from '../modules/tag/factories/GetAllTagsFactory';
 import { ensureAuthenticateMiddleware } from '../shared/http/EnsureAuthenticateMiddleware';
 
 const tagRoutes = Router();
 
 tagRoutes.post('/create', ensureAuthenticateMiddleware, async (req, res) => {
   return createTag().handle(req, res);
+});
+
+tagRoutes.get('/', ensureAuthenticateMiddleware, async (req, res) => {
+  return getAllTags().handle(req, res);
 });
 
 tagRoutes.put('/:id', ensureAuthenticateMiddleware, async (req, res) => {

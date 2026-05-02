@@ -31,4 +31,9 @@ export class TagRepository implements ITagPortRepository {
     const updatedTag = await TagModel.findByIdAndUpdate(id, data, { new: true });
     return updatedTag as Tag;
   }
+
+  async findAll(ownerId: string): Promise<Tag[]> {
+    const tags = await TagModel.find({ owner: ownerId });
+    return tags;
+  }
 }
