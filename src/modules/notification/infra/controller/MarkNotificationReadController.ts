@@ -13,6 +13,10 @@ export class MarkNotificationReadController {
         return res.status(401).json({ error: 'Usuário não autenticado.' });
       }
 
+      if (!id || typeof id !== 'string') {
+        return res.status(400).json({ error: 'ID não informado.' });
+      }
+
       await this.markNotificationReadService.execute(id, owner);
 
       return res.status(200).json({ message: 'Notificação marcada como lida.' });

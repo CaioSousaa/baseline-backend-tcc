@@ -1,8 +1,9 @@
-import Agenda from 'agenda';
+import { Agenda } from 'agenda';
+import { MongoBackend } from '@agendajs/mongo-backend';
 
 const mongoUri = process.env.MONGODB_URL as string;
 
 export const agenda = new Agenda({
-  db: { address: mongoUri, collection: 'agendaJobs' },
-  processEvery: '1 minute',
+  backend: new MongoBackend({ address: mongoUri, collection: 'agendaJobs' }),
+  processEvery: '5 hours',
 });
