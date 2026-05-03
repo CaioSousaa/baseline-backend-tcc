@@ -1,0 +1,8 @@
+import { TaskModel } from '../../../infra/mongo/schemas/Task';
+import { ITaskDTO } from '../dto/ITaskDTO';
+
+export type Task = InstanceType<typeof TaskModel>;
+
+export interface ITaskPortRepository {
+  create(data: ITaskDTO): Promise<Task>;
+}
