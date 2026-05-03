@@ -16,4 +16,8 @@ export class TaskRepository implements ITaskPortRepository {
   async update(id: string, data: Partial<ITaskDTO>): Promise<void> {
     await TaskModel.updateOne({ _id: id }, data);
   }
+
+  async delete(id: string): Promise<void> {
+    await TaskModel.deleteOne({ _id: id });
+  }
 }
