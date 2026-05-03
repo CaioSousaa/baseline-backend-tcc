@@ -8,4 +8,5 @@ export interface ITaskPortRepository {
   findOne(id: string): Promise<Task | null>;
   update(id: string, data: Partial<ITaskDTO>): Promise<void>;
   delete(id: string): Promise<void>;
+  find(ownerId: string): Promise<Task[]>;
 }
