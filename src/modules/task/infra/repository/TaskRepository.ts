@@ -20,4 +20,9 @@ export class TaskRepository implements ITaskPortRepository {
   async delete(id: string): Promise<void> {
     await TaskModel.deleteOne({ _id: id });
   }
+
+  async find(ownerId: string): Promise<Task[]> {
+    const tasks = await TaskModel.find({ owner: ownerId });
+    return tasks as Task[];
+  }
 }
