@@ -5,4 +5,6 @@ export type Task = InstanceType<typeof TaskModel>;
 
 export interface ITaskPortRepository {
   create(data: ITaskDTO): Promise<Task>;
+  findOne(id: string): Promise<Task | null>;
+  update(id: string, data: Partial<ITaskDTO>): Promise<void>;
 }
