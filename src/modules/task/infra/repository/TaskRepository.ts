@@ -7,4 +7,13 @@ export class TaskRepository implements ITaskPortRepository {
     const task = await TaskModel.create(data);
     return task as Task;
   }
+
+  async findOne(id: string): Promise<Task | null> {
+    const task = await TaskModel.findOne({ _id: id });
+    return task as Task | null;
+  }
+
+  async update(id: string, data: Partial<ITaskDTO>): Promise<void> {
+    await TaskModel.updateOne({ _id: id }, data);
+  }
 }
