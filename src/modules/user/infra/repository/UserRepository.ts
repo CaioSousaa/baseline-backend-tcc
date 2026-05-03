@@ -12,4 +12,14 @@ export class UserRepository implements IUserPortRepository {
     const user = await UserModel.findOne({ email });
     return user;
   }
+
+  async getById(id: string): Promise<User | null> {
+    const user = await UserModel.findById(id);
+    return user;
+  }
+
+  async update(id: string, data: Partial<IUserDTO>): Promise<User | null> {
+    const user = await UserModel.findByIdAndUpdate(id, data, { new: true });
+    return user;
+  }
 }

@@ -70,6 +70,7 @@ O servidor inicia na porta definida em `PORT` (padrão: `3333`).
 | Método | Rota | Descrição |
 |---|---|---|
 | POST | `/user/create` | Cadastrar novo usuário |
+| PUT | `/user/update` | Atualizar perfil do usuário `[JWT obrigatório]` |
 
 ### Tarefas `[JWT obrigatório]`
 
