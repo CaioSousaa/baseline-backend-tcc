@@ -15,6 +15,8 @@
     "main": "src/main/main.ts",
     "scripts": {
         "dev": "nodemon src/main/main.ts",
+        "build": "tsc",
+        "start": "node dist/main/main.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "dependencies": {
